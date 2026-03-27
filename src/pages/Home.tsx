@@ -63,7 +63,7 @@ export default function Home() {
               <div style={{ position: 'relative', zIndex: 1, paddingTop: '50px' }}>
                 <p style={{
                   fontFamily: 'miaoziguozhiti, sans-serif',
-                  fontSize: '18px',
+                  fontSize: '14px',
                   lineHeight: 2.2,
                   color: '#2D3748',
                   marginBottom: '20px',
