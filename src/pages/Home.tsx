@@ -23,11 +23,12 @@ export default function Home() {
     fetch('https://xm.hongqiao.click/api-quote/0')
       .then(res => res.json())
       .then(data => {
-        if (data.content) {
+        if (data.data?.content_list?.[0]) {
+          const item = data.data.content_list[0]
           setQuote({
-            content: data.content,
-            author: data.author || '',
-            date: data.date || ''
+            content: item.forward || '',
+            author: item.text_author_info?.text_author_name || item.author?.user_name || '',
+            date: data.data.date || ''
           })
         }
       })
