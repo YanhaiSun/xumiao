@@ -20,15 +20,14 @@ export default function Home() {
   )
 
   useEffect(() => {
-    fetch('http://v3.wufazhuce.com:8000/api/channel/one/0/0')
+    fetch('http://xm.hongqiao.click/api-quote/0')
       .then(res => res.json())
       .then(data => {
-        if (data.data?.content_list?.[0]) {
-          const item = data.data.content_list[0]
+        if (data.content) {
           setQuote({
-            content: item.forward || item.content || '',
-            author: item.text_author_info?.text_author_name || item.author?.user_name || '',
-            date: data.data.date || ''
+            content: data.content,
+            author: data.author || '',
+            date: data.date || ''
           })
         }
       })
