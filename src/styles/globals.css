@@ -1,0 +1,74 @@
+@import "tailwindcss";
+
+@theme {
+  --color-primary: #7C3AED;
+  --color-primary-light: #A78BFA;
+  --color-secondary: #F472B6;
+  --color-accent: #38BDF8;
+  --color-success: #34D399;
+  --color-warning: #FBBF24;
+  --font-family-quicksand: 'Quicksand', 'PingFang SC', sans-serif;
+  --font-family-inter: 'Inter', 'Noto Sans SC', sans-serif;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-family-inter);
+  background: #FAFBFF;
+  color: #1F2937;
+  min-height: 100vh;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-family-quicksand);
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #A78BFA;
+  border-radius: 3px;
+}
+
+::selection {
+  background: #F472B6;
+  color: white;
+}
+
+.gradient-text {
+  background: linear-gradient(135deg, #7C3AED, #F472B6);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.font-quicksand {
+  font-family: var(--font-family-quicksand);
+}
+
+.glass {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+}
+
+.sticky-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  border-bottom: 1px solid rgba(124, 58, 237, 0.1);
+}
