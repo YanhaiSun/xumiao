@@ -20,7 +20,7 @@ export default function Home() {
   )
 
   useEffect(() => {
-    fetch('http://xm.hongqiao.click/api-quote/0')
+    fetch('https://xm.hongqiao.click/api-quote/0')
       .then(res => res.json())
       .then(data => {
         if (data.content) {
@@ -45,7 +45,7 @@ export default function Home() {
 
       {/* Hero Section - Daily Quote Irregular Sticky Note */}
       <section style={{ position: 'relative', padding: '48px 16px', overflow: 'hidden' }}>
-        <div style={{ maxWidth: '600px', margin: '0 auto', position: 'relative', zIndex: 1 }}>
+        <div style={{ maxWidth: '450px', margin: '0 auto', position: 'relative', zIndex: 1 }}>
           {quote ? (
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -55,7 +55,7 @@ export default function Home() {
                 position: 'relative',
                 padding: '60px 90px',
                 background: 'url(/quote-bg.png) center/cover no-repeat',
-                maxWidth: '800px',
+                maxWidth: '300px',
                 margin: '0 auto'
               }}
             >
