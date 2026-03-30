@@ -20,15 +20,15 @@ export default function Home() {
   )
 
   useEffect(() => {
-    fetch('https://xm.hongqiao.click/api-quote/0')
-      .then(res => res.json())
-      .then(data => {
-        if (data.data?.content_list?.[0]) {
-          const item = data.data.content_list[0]
+    fetch('https://api.suyanw.cn/api/yiyan.php?type=js')
+      .then(res => res.text())
+      .then(text => {
+        const match = text.match(/document\.write\(['"](.+?)['"]\)/)
+        if (match && match[1]) {
           setQuote({
-            content: item.forward || '',
-            author: item.text_author_info?.text_author_name || item.author?.user_name || '',
-            date: data.data.date || ''
+            content: match[1],
+            author: '',
+            date: ''
           })
         }
       })
