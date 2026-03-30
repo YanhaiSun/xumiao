@@ -61,7 +61,7 @@ export default function Home() {
               }}
             >
               {/* Quote content */}
-              <div style={{ position: 'relative', zIndex: 1, paddingTop: '50px' }}>
+              <div style={{ position: 'relative', zIndex: 1, paddingTop: '20px' }}>
                 <p style={{
                   fontFamily: 'miaoziguozhiti, sans-serif',
                   fontSize: '16px',
