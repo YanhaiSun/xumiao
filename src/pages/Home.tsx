@@ -54,9 +54,9 @@ export default function Home() {
               transition={{ duration: 0.6 }}
               style={{
                 position: 'relative',
-                padding: '60px 90px',
+                padding: '50px 70px',
                 background: 'url(/quote-bg.png) center/cover no-repeat',
-                maxWidth: '300px',
+                maxWidth: '550px',
                 margin: '0 auto'
               }}
             >
@@ -64,7 +64,7 @@ export default function Home() {
               <div style={{ position: 'relative', zIndex: 1, paddingTop: '50px' }}>
                 <p style={{
                   fontFamily: 'miaoziguozhiti, sans-serif',
-                  fontSize: '14px',
+                  fontSize: '16px',
                   lineHeight: 2.2,
                   color: '#2D3748',
                   marginBottom: '20px',
@@ -90,9 +90,9 @@ export default function Home() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               style={{
-                padding: '60px 90px',
+                padding: '50px 70px',
                 background: 'url(/quote-bg.png) center/cover no-repeat',
-                maxWidth: '800px',
+                maxWidth: '550px',
                 margin: '0 auto'
               }}
             >
