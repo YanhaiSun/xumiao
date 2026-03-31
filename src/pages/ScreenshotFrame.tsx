@@ -172,25 +172,40 @@ export default function ScreenshotFrame() {
         const imgAspect = screenshotImg.width / screenshotImg.height
         const screenAspect = screenW / screenH
 
-        let drawWidth, drawHeight, drawX, drawY
+        // 填充模式：让图片铺满整个屏幕区域，可能裁剪边缘
+        let srcX, srcY, srcW, srcH
+        let drawX, drawY, drawW, drawH
 
         if (imgAspect > screenAspect) {
-          drawWidth = screenW
-          drawHeight = screenW / imgAspect
+          // 图片更宽：以高度为基准，水平方向会裁剪
+          drawH = screenH
+          drawW = screenH * imgAspect
           drawX = screenX
-          drawY = screenY + (screenH - drawHeight) / 2
-        } else {
-          drawHeight = screenH
-          drawWidth = screenH * imgAspect
-          drawX = screenX + (screenW - drawWidth) / 2
           drawY = screenY
+          // 计算图片中需要裁剪的水平区域
+          srcW = screenshotImg.width
+          srcH = screenshotImg.height
+          srcX = (screenshotImg.width - drawW) / 2
+          srcY = 0
+        } else {
+          // 图片更高：以宽度为基准，垂直方向会裁剪
+          drawW = screenW
+          drawH = screenW / imgAspect
+          drawX = screenX
+          drawY = screenY
+          // 计算图片中需要裁剪的垂直区域
+          srcW = screenshotImg.width
+          srcH = screenshotImg.height
+          srcX = 0
+          srcY = (screenshotImg.height - drawH) / 2
         }
 
-        // Step 1: Draw screenshot first
+        // Step 1: Draw screenshot first (填充模式，会裁剪边缘)
         ctx.save()
-        roundRect(ctx, drawX, drawY, drawWidth, drawHeight, 6)
+        ctx.beginPath()
+        ctx.rect(screenX, screenY, screenW, screenH)
         ctx.clip()
-        ctx.drawImage(screenshotImg, drawX, drawY, drawWidth, drawHeight)
+        ctx.drawImage(screenshotImg, srcX, srcY, srcW, srcH, drawX, drawY, drawW, drawH)
         ctx.restore()
 
         // Step 2: Draw frame on TOP (after screenshot)
