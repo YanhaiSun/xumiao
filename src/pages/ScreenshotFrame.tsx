@@ -143,8 +143,10 @@ export default function ScreenshotFrame() {
     frameImg.src = selectedFrame.frameImage!
 
     frameImg.onload = () => {
+      console.log('Frame image loaded:', frameImg.width, 'x', frameImg.height)
       canvas.width = frameImg.width
       canvas.height = frameImg.height
+      console.log('Canvas set to:', canvas.width, 'x', canvas.height)
 
       // Load screenshot
       const screenshotImg = new Image()
@@ -152,6 +154,7 @@ export default function ScreenshotFrame() {
       screenshotImg.src = screenshot
 
       screenshotImg.onload = () => {
+        console.log('Screenshot loaded:', screenshotImg.width, 'x', screenshotImg.height)
         // Calculate screenshot position based on device type
         let screenX, screenY, screenW, screenH
 
@@ -212,6 +215,7 @@ export default function ScreenshotFrame() {
         ctx.drawImage(frameImg, 0, 0)
 
         const result = canvas.toDataURL('image/png')
+        console.log('Final canvas size:', canvas.width, 'x', canvas.height)
         setGeneratedImage(result)
         setIsLoading(false)
       }
@@ -519,16 +523,3 @@ export default function ScreenshotFrame() {
   )
 }
 
-function roundRect(ctx: CanvasRenderingContext2D, x: number, y: number, w: number, h: number, r: number) {
-  ctx.beginPath()
-  ctx.moveTo(x + r, y)
-  ctx.lineTo(x + w - r, y)
-  ctx.quadraticCurveTo(x + w, y, x + w, y + r)
-  ctx.lineTo(x + w, y + h - r)
-  ctx.quadraticCurveTo(x + w, y + h, x + w - r, y + h)
-  ctx.lineTo(x + r, y + h)
-  ctx.quadraticCurveTo(x, y + h, x, y + h - r)
-  ctx.lineTo(x, y + r)
-  ctx.quadraticCurveTo(x, y, x + r, y)
-  ctx.closePath()
-}
